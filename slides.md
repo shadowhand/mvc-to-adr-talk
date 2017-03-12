@@ -382,7 +382,8 @@ Original purpose of controllers...
 
 ![Controller Responsibility](img/controller-responsibility.png)
 
-Note: input and state come from? //
+Note: state is user state, not application state //
+  input and state come from? //
   commands for model and view //
   keep thinking about this
 
@@ -440,7 +441,16 @@ Views were meant to be *dumb*.
 Very little context, not free of logic. <!-- .element: class="fragment" -->
 Note: formatting of data //
   specific to type of output //
-  pacman
+  pacman chomp chomp
+
+----
+
+Original purpose of views ...
+
+![Model Responsibility](img/view-responsibility.png)
+
+Note: receives data //
+  prepares for display
 
 ---
 
