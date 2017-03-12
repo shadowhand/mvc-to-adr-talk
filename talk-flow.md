@@ -32,13 +32,13 @@
 
 - request/response life cycle
 - stateless http vs gui
-- multiple actions per controller
 - model vs domain
 - model vs application model
 - active vs passive view
 
 # Problems
 
+- multiple actions per controller
 - "god" controllers
 - model replaces domain
 - template is not a view
