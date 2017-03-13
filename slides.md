@@ -1,7 +1,7 @@
 ---
 title: MVC ➡ ADR
 revealOptions:
-  showNotes: true
+  showNotes: false
 ---
 
 # MVC ➡ ADR
