@@ -139,7 +139,7 @@ Note: django started in 2003 privately //
 
 ## 2006
 
-CodeIgniter, Zend Framework, SilverStrip
+CodeIgniter, Zend Framework, SilverStripe
 
 ----
 
@@ -175,18 +175,21 @@ Note: most PHP frameworks now use MVC
 
 ---
 
-![MVC Flow](img/mvc-flow.png) <!-- .element style="max-height:600px" -->
-
-Note: before variants //
-  i am bad at UML //
-  i'll pay you to make good diagrams //
-  questions?
-
----
-
 # Variants
 
 Note: most not applicable for PHP
+
+----
+
+Data flow review.
+
+----
+
+![MVC Flow](img/mvc-flow.png) <!-- .element style="max-height:600px" -->
+
+Note: i am bad at UML //
+  i'll pay you to make good diagrams //
+  questions?
 
 ----
 
