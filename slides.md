@@ -757,7 +757,7 @@ public function failed(/* ... */): Response
 public function redirect(string $target): Response
 {
     return $this->responseFactory->createResponse(302)
-        ->>withHeader('Location', $target);
+        ->withHeader('Location', $target);
 }
 ```
 
