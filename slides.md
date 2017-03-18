@@ -10,8 +10,8 @@ Woody Gilk
 [@shadowhand](https://twitter.com/shadowhand)  
 [#mwphp17](https://twitter.com/hashtag/mwphp17)
 
-Note: Who has used MVC?
-  Heard of ADR? 
+Note: Who has used MVC? //
+  Heard of ADR? //
   Used ADR?
 
 ----
@@ -172,6 +172,13 @@ Phalcon
 *et al*
 
 Note: most PHP frameworks now use MVC
+
+----
+
+## 2014
+
+Paul M Jones publishes ADR  
+as an alternative to MVC.
 
 ---
 
@@ -827,7 +834,7 @@ Use what works for you.<!-- .element: class="fragment" -->
 
 [![The Clean Architecture](img/clean-architecture.jpg)](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html)
 
----
+----
 
 Everything will be okay.
 

@@ -1,3 +1,6 @@
 #!/bin/bash
 
-reveal-md slides.md -w --theme=night --highlight-theme=atom-one-dark
+reveal-md slides.md -w \
+    --preprocessor pre.js \
+    --theme=night \
+    --highlight-theme=atom-one-dark
