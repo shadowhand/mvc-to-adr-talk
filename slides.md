@@ -28,7 +28,7 @@ It is a software *design pattern*.
 
 ----
 
-It separates the *mental mode*  
+It separates the *mental model*  
 from the *computer model*.
 
 Note: user ui != computer ui //
@@ -407,7 +407,7 @@ Note: applications are more than storage //
 
 ----
 
-Models look like a single **type**.
+Models look like a single *type*.
 
 Note: models are not a type, but a generalization //
   unless domain is storage, do lots of things //
@@ -771,10 +771,6 @@ Note: post login responder
   - failure, showing errors
   - success, redirecting
 
-----
-
-[github.com/shadowhand/mvc-example](https://github.com/shadowhand/mvc-example)
-
 ---
 
 # Do we need ADR?
@@ -827,6 +823,10 @@ Keep domain code out of presentation code. <!-- .element: class="fragment" -->
 
 Use what works for you.<!-- .element: class="fragment" -->
 
+----
+
+[![The Clean Architecture](img/clean-architecture.jpg)](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html)
+
 ---
 
 Everything will be okay.
@@ -836,6 +836,10 @@ Everything will be okay.
 ---
 
 # Questions?
+
+----
+
+[github.com/shadowhand/mvc-example](https://github.com/shadowhand/mvc-example)
 
 ---
 
