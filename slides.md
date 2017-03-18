@@ -309,14 +309,16 @@ Model was meant to be a domain *gateway*.
 
 Note: gateway/coordinator //
   problem domain //
-  application model (mvp reference)
+  application model (mvp reference) //
+  observers
 
 ----
 
 View was meant to contain some *logic*.
 
 Note: more purpose than just a template //
-  aware of the model data (read only)
+  aware of the model data (read only) //
+  immutability can help here
 
 ----
 
@@ -367,7 +369,8 @@ Controller has become a *"God Object"*.
 
 Note: anti-pattern //
   separation of concerns //
-  multiple HTTP methods = code smell
+  multiple HTTP methods = code smell //
+  input and state
 
 ----
 
@@ -386,7 +389,7 @@ Original purpose of controllers...
 ![Controller Responsibility](img/controller-responsibility.png)
 
 Note: state is user state, not application state //
-  input and state come from? //
+  input and state come from? (request) //
   commands for model and view //
   keep thinking about this
 
@@ -400,7 +403,15 @@ Model has become *storage*.
 
 Note: applications are more than storage //
   where are application rules? //
-  where is domain code? //
+  where is domain code?
+
+----
+
+Models look like a single **type**.
+
+Note: models are not a type, but a generalization //
+  unless domain is storage, do lots of things //
+  read, write, services, externals
 
 ----
 
@@ -412,7 +423,9 @@ Note: gateway for domain //
   lots of coordination //
   authorization //
   application rules //
-  storage separate
+  storage separate //
+  command bus //
+  cqrs
 
 ----
 
@@ -500,25 +513,38 @@ Note: web specific //
 
 ### Action
 
-- does not manipulate Responder
+- does not manipulate Responder <!-- .element: class="fragment" -->
 - is always singular <!-- .element: class="fragment" -->
+
+```php
+'GET /users/{id}' => User\UserProfile::class,
+'POST /users/{id}' => User\UserUpdate::class,
+```
+<!-- .element: class="fragment" -->
 
 ----
 
 ### Domain
 
-- does not interact with Responder
+- does not interact with Responder <!-- .element: class="fragment" -->
 - might not be a concrete component <!-- .element: class="fragment" -->
 
 ----
 
 ### Responder
 
-- does not interact with Domain
+- does not interact with Domain <!-- .element: class="fragment" -->
 - corresponds with Action <!-- .element: class="fragment" -->
 - generates a complete response <!-- .element: class="fragment" -->
 
+Note: complete contains headers //
+  output format is contained
+
 ---
+
+Flow comparison?
+
+----
 
 ![ADR Flow](img/adr-flow.png) <!-- .element style="max-height:600px" -->
 
@@ -530,8 +556,8 @@ Note: web specific //
 
 ## Benefits?
 
-- clean break from existing terms
-- (possibly) better separation of concerns <!-- .element: class="fragment" -->
+- clean break from existing terms <!-- .element: class="fragment" -->
+- better separation of concerns <!-- .element: class="fragment" -->
 - domain is a first class citizen <!-- .element: class="fragment" -->
 
 Note: possibly easier to reason about //
@@ -555,6 +581,23 @@ Time to explore code.
 ---
 
 # ADR Example
+
+Note: not equip
+
+----
+
+Goal is really simple invocation.
+
+```php
+$response = $action($request);
+```
+<!-- .element: style="max-width:45%" -->
+
+Note: determine the action from routing //
+  construct the action //
+  generate response
+
+----
 
 Basic user login.
 
@@ -610,7 +653,14 @@ Note: responder for showing login
 
 ----
 
+- Action has no input or state
+- Responder generates a *complete* response
+
+----
+
 And now with more **input**.
+
+Performing a login.
 
 Note: command bus usage
 
@@ -713,12 +763,30 @@ public function redirect(string $target): Response
 
 Note: post login responder
 
+----
+
+- Action uses input from the request
+- Domain accessed by command bus
+- Responder handles two scenarios:
+  - failure, showing errors
+  - success, redirecting
+
+----
+
+[github.com/shadowhand/mvc-example](https://github.com/shadowhand/mvc-example)
+
 ---
 
 # Do we need ADR?
 
 Note: or "Does this work with MVC?" //
   my thinking has changed
+
+----
+
+Could the same thing be accomplished with MVC?
+
+🤔
 
 ----
 
@@ -742,6 +810,15 @@ Note: not an architecture pattern
 
 [*Martin Fowler* - 2006](https://martinfowler.com/eaaDev/SeparatedPresentation.html)
 
+Note: Separated Presentation
+
+----
+
+Use the pattern correctly.
+
+Note: remember what mvc is and isn't //
+  adr isn't actually radical
+
 ----
 
 Don't let MVC dictate your domain architecture.
@@ -750,19 +827,15 @@ Keep domain code out of presentation code. <!-- .element: class="fragment" -->
 
 Use what works for you.<!-- .element: class="fragment" -->
 
-Note: remember what mvc is and isn't //
-  adr isn't actually radical
-
 ---
 
-Everything will be okay.  
+Everything will be okay.
+
 😎
 
 ---
 
-# fin.
-
-Questions?
+# Questions?
 
 ---
 
@@ -781,6 +854,10 @@ Go forth.
 Make stuff.  
 Be awesome.
 
+---
+
 ![joindin-qr-code](https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=https%3A%2F%2Fjoind.in%2Ftalk%2Fffbb3&choe=UTF-8&chld=H)
+
+fin.
 
 Note: JoindIn link

@@ -10,4 +10,4 @@ reveal-md slides.md --static "$dir"
 
 cp -r img "$dir"
 
-rsync -az "$dir/" shadowhand.webfactional.com:webapps/shadowhand_talks_static/mvc-to-adr/
+rsync -av "$dir/" shadowhand.webfactional.com:webapps/shadowhand_talks_static/mvc-to-adr/
